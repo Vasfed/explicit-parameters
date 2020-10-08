@@ -57,6 +57,19 @@ RSpec.describe ExplicitParameters::Parameters do
     }.to raise_error(ExplicitParameters::InvalidParameters, message)
   end
 
+  context "when non-required parameter is nil" do
+    let :parameters do
+      {
+        'id' => '42',
+        'name' => nil
+      }
+    end
+
+    it "accepts it" do
+      expect(params[:id]).to be == '42'
+    end
+  end
+
   context 'with nested parameters' do
     let :definition do
       ExplicitParameters::Parameters.define(:nested) do

@@ -3,7 +3,7 @@ require 'active_model'
 
 module ExplicitParameters
   class Parameters
-    include Virtus.model
+    include Virtus.model(required: false)
     include ActiveModel::Validations
     include Enumerable
 
